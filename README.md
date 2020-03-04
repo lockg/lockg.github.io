@@ -23,7 +23,13 @@
     <li>
       <a href="{{ post.url }}">{{ post.title }}</a>
 	  <p>{{ post.date | date_to_long_string }}</p>
-	  <p>{{ post.excerpt }}</p>
+	  <abstract>{{ post.abstract }}</abstract>
+	  <!-- <p>{{ post.excerpt }}</p> -->
+	  <p>
+		  {{ post.content | markdownify | strip_html | truncatewords: 40 }}
+		  <a href="{{ post.url }}">read more</a>
+	  </p>
+	  <hr/>
     </li>
   {% endfor %}
 </ul>
